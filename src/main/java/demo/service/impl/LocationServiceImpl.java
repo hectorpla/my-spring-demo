@@ -1,7 +1,7 @@
 package demo.service.impl;
 
 import demo.domain.Location;
-import demo.domain.LocationRespository;
+import demo.domain.LocationRepository;
 import demo.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,32 +17,32 @@ import java.util.List;
 @Service
 public class LocationServiceImpl implements LocationService {
 
-    private LocationRespository locationRespository;
+    private LocationRepository locationRepository;
 
     @Autowired
-    public LocationServiceImpl(LocationRespository locationRespository) {
-        this.locationRespository = locationRespository;
+    public LocationServiceImpl(LocationRepository locationRepository) {
+        this.locationRepository = locationRepository;
     }
 
     @Override
     public List<Location> saveRunningLocation(List<Location> runningLocations) {
-        return locationRespository.save(runningLocations);
+        return locationRepository.save(runningLocations);
     }
 
     @Override
     public void deleteAll() {
-        locationRespository.deleteAll();
+        locationRepository.deleteAll();
     }
 
     @Override
     public Page<Location> findByRunnerMovementType(String movementType, Pageable pageable) {
-        return locationRespository.findByRunnerMovementType(
+        return locationRepository.findByRunnerMovementType(
                 // Enum.valueOf(String)
                 Location.RunnerMovementType.valueOf(movementType), pageable);
     }
 
     @Override
     public Page<Location> findByUnitInfoRunningId(String runningId, Pageable pageable) {
-        return locationRespository.findByUnitInfoRunningId(runningId, pageable);
+        return locationRepository.findByUnitInfoRunningId(runningId, pageable);
     }
 }

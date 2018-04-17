@@ -15,5 +15,8 @@ public interface LocationService {
     void deleteAll();
 
     Page<Location> findByRunnerMovementType(String movementType, Pageable pageable);
+
     Page<Location> findByUnitInfoRunningId(String runningId, Pageable pageable);
+
+
 }

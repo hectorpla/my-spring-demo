@@ -16,11 +16,11 @@ import java.util.List;
  */
 
 @RestController
-public class RuningUploadRestController {
+public class RunningUploadRestController {
     private LocationService locationService;
 
     @Autowired
-    public RuningUploadRestController(LocationService locationService) {
+    public RunningUploadRestController(LocationService locationService) {
         this.locationService = locationService;
     }
 
@@ -48,4 +48,5 @@ public class RuningUploadRestController {
                                           @RequestParam(name = "size") int size) {
         return this.locationService.findByUnitInfoRunningId(runningId, new PageRequest(page, size));
     }
+
 }
